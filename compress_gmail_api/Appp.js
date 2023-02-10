@@ -12,7 +12,7 @@ oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 const sendmail = async (req, res)=>{
     try {
         const accessToken = await oauth2Client.getAccessToken();
-        const mailList=[ 'parthsood99@gmail.com','patelmurli15@gmail.com','patelaniket1207@gmail.com']
+        const mailList=['parthsood99@gmail.com','patelmurli15@gmail.com','patelaniket1207@gmail.com' ]
         const transport = createTransport({
             service: 'gmail',
             auth : {
@@ -31,10 +31,15 @@ const sendmail = async (req, res)=>{
             subject: "Expiring Items",
             text: "The Items are going to expire",
             html: {path:'C:/Users/parth/OneDrive/Desktop/DESKTOP/Gmail_API/new.html'}
+
         };
+
         const result =
             await transport.sendMail(mailOptions);
+
             return (result);
+
+
     }
     catch (err){
         return (err.message);
